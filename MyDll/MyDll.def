@@ -1,0 +1,4 @@
+LIBRARY "MyDll"
+EXPORTS
+	jAdd
+	jSub
