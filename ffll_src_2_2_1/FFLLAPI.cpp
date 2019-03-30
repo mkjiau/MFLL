@@ -17,6 +17,7 @@
 #include "MemberFuncBase.h"
 #include <vector>
 #include <list>
+#include <windows.h>
 
 class ModelContainer;	// forward declaration
 
@@ -538,3 +539,27 @@ int WIN_FFLL_API ffll_close_model(int model_idx)
 	return 0;
  
 }; // end ffll_close_model()
+
+
+int WIN_FFLL_API jFuzzyInference(LPSTR fcl_str, double our_health, double enemy_health)
+{
+	// create and load the model
+	int model = ffll_new_model();
+
+	int ret_val = (int)ffll_load_fcl_string(model, fcl_str);
+	//int ret_val = (int)ffll_load_fcl_file(model, "D:\\Playground\\mc-dlls-dev\\MultiCharts_Dll\\x64\\aiwisdom.fcl");
+
+
+	// create a child for the model...
+	int child = ffll_new_child(model);
+
+	// set input variables...
+	ffll_set_value(model, child, 0, our_health);
+	ffll_set_value(model, child, 1, enemy_health);
+
+	// get and display the output value
+	int output = (int)ffll_get_output_value(model, child);
+
+
+	return output;
+}

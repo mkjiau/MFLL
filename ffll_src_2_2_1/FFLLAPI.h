@@ -13,6 +13,7 @@
 #define _FFLLAPI_H
 
 #include <stddef.h>
+#include <windows.h>
 
 // Official API
 // NOTE: we don't use __declspec(dllexport) to export, we use a .def file as that is
@@ -45,6 +46,7 @@ int WIN_FFLL_API ffll_new_child(int model_idx) ;
 int WIN_FFLL_API ffll_load_fcl_file(int model_idx, const char* file); 
 int WIN_FFLL_API ffll_load_fcl_string(int model_idx, const char* fcl_str); 
 
+int WIN_FFLL_API jFuzzyInference(LPSTR fcl_str, double our_health, double enemy_health);
  
 const wchar_t* WIN_FFLL_API ffll_get_msg_textW(int model_idx);
 const char* WIN_FFLL_API ffll_get_msg_textA(int model_idx);
