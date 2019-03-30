@@ -3,7 +3,7 @@
 //
 // Purpose:	This file contains ancestor code for the FuzzyVariable classes
 //
-// Copyright © 1999-2001 Louder Than A Bomb! Software
+// Copyright ï¿½ 1999-2001 Louder Than A Bomb! Software
 //
 // This file is part of the FFLL (Free Fuzzy Logic Library) project (http://ffll.sourceforge.net)
 // It is released under the BSD license, see http://ffll.sourceforge.net/license.txt for the full text.
@@ -849,7 +849,7 @@ void FuzzyVariableBase::save_sets_to_fcl_file(std::ofstream& file_contents)
 //
 // Arguments:
 //
-//		std::ifstream& file_contents - FCL file in stream form
+//		std::istream& file_contents - FCL file in stream form
 //
 // Returns:
 //
@@ -864,7 +864,7 @@ void FuzzyVariableBase::save_sets_to_fcl_file(std::ofstream& file_contents)
 // ------	----		------------
 //
 // 
-int FuzzyVariableBase::load_sets_from_fcl_file(std::ifstream& file_contents)
+int FuzzyVariableBase::load_sets_from_fcl_file(std::istream& file_contents)
 {
   	file_contents.seekg(0);	// go to start of file
  

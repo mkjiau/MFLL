@@ -3,7 +3,7 @@
 //
 // Purpose:		This file contains the API declarations for FFLL
 //
-// Copyright © 2001 Louder Than A Bomb! Software
+// Copyright ï¿½ 2001 Louder Than A Bomb! Software
 //
 // This file is part of the FFLL (Free Fuzzy Logic Library) project (http://ffll.sourceforge.net)
 // It is released under the BSD license, see http://ffll.sourceforge.net/license.txt for the full text.
@@ -43,6 +43,7 @@ int WIN_FFLL_API ffll_new_model() ;
 int WIN_FFLL_API ffll_close_model(int model_idx) ;
 int WIN_FFLL_API ffll_new_child(int model_idx) ;
 int WIN_FFLL_API ffll_load_fcl_file(int model_idx, const char* file); 
+int WIN_FFLL_API ffll_load_fcl_string(int model_idx, const char* fcl_str); 
 
  
 const wchar_t* WIN_FFLL_API ffll_get_msg_textW(int model_idx);

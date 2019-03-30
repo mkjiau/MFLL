@@ -18,6 +18,57 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+	string myFCL = " \
+FUNCTION_BLOCK \n\
+\n\
+VAR_INPUT \n\
+	Our_Health	REAL; (*RANGE(0 .. 100) *) \n\
+	Enemy_Health	REAL; (*RANGE(0 .. 100) *) \n\
+END_VAR \n\
+\n\
+VAR_OUTPUT \n\
+	Aggressiveness	REAL; (*RANGE(0 .. 4) *) \n\
+END_VAR \n\
+\n\
+FUZZIFY Our_Health \n\
+	TERM Near_Death : = (0, 0) (0, 1) (50, 0); \n\
+	TERM Good : = (14, 0) (50, 1) (83, 0); \n\
+	TERM Excellent : = (50, 0) (100, 1) (100, 0); \n\
+END_FUZZIFY \n\
+\n\
+FUZZIFY Enemy_Health \n\
+	TERM Near_Death : = (0, 0) (0, 1) (50, 0); \n\
+	TERM Good : = (14, 0) (50, 1) (83, 0); \n\
+	TERM Excellent : = (50, 0) (100, 1) (100, 0); \n\
+END_FUZZIFY \n\
+\n\
+FUZZIFY Aggressiveness \n\
+	TERM Run_Away : = 1; \n\
+	TERM Fight_Defensively : = 2; \n\
+	TERM All_Out_Attack : = 3; \n\
+END_FUZZIFY \n\
+\n\
+DEFUZZIFY valve \n\
+	METHOD : MoM; \n\
+END_DEFUZZIFY \n\
+\n\
+RULEBLOCK first\n\
+	AND:MIN;\n\
+	ACCUM:MAX;\n\
+	RULE 0: IF Good AND Good THEN Fight_Defensively;\n\
+	RULE 1: IF Good AND Excellent THEN Fight_Defensively;\n\
+	RULE 2: IF Good AND Near_Death THEN All_Out_Attack;\n\
+	RULE 3: IF Excellent AND Good THEN All_Out_Attack;\n\
+	RULE 4: IF Excellent AND Excellent THEN Fight_Defensively;\n\
+	RULE 5: IF Excellent AND Near_Death THEN All_Out_Attack;\n\
+	RULE 6: IF Near_Death AND Good THEN Run_Away;\n\
+	RULE 7: IF Near_Death AND Excellent THEN Run_Away;\n\
+	RULE 8: IF Near_Death AND Near_Death THEN Fight_Defensively;\n\
+END_RULEBLOCK\n\
+\n\
+END_FUNCTION_BLOCK \n\
+";
+
 	float	our_health, enemy_health; // values for input variables
 	char	option;	// var for selection of what user wants to do
 
@@ -27,7 +78,8 @@ int main(int argc, char* argv[])
 					   // create and load the model
 	int model = ffll_new_model();
 
-	int ret_val = (int)ffll_load_fcl_file(model, "..\\aiwisdom.fcl");
+	int ret_val = (int)ffll_load_fcl_string(model, myFCL.c_str());
+	//int ret_val = (int)ffll_load_fcl_file(model, "D:\\Playground\\mc-dlls-dev\\MultiCharts_Dll\\x64\\aiwisdom.fcl");
 
 	if (ret_val < 0)
 	{

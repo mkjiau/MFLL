@@ -4,7 +4,7 @@
 // Purpose:	Interface for the FuzzyModelBase class.  This class holds
 //			all the information for a fuzzy model.
 //
-// Copyright © 1999-2001 Louder Than A Bomb! Software
+// Copyright ?1999-2001 Louder Than A Bomb! Software
 //
 // This file is part of the FFLL (Free Fuzzy Logic Library) project (http://ffll.sourceforge.net)
 // It is released under the BSD license, see http://ffll.sourceforge.net/license.txt for the full text.
@@ -60,8 +60,9 @@ class  FuzzyModelBase : virtual public FFLLBase
 		virtual int set_inference_method(int method);
 		virtual int set_composition_method(int method);
 
-		// load file functions
+		// load fcl file/string functions
  	 	virtual int load_from_fcl_file(const char* file_name);
+		virtual int load_from_fcl_string(const char * fcl_str);
 		int load(const char* file, short mode, bool from_loder = false);
 
 		// save model functions
@@ -100,10 +101,10 @@ class  FuzzyModelBase : virtual public FFLLBase
 		void set_model_name(const char* _name);
 		virtual int set_output_dom(DOMType* out_set_dom_arr, int set_idx, DOMType new_value) ;
 
-		// load file functions
- 		int load_vars_from_fcl_file(std::ifstream& file_contents, bool output = false);
-		int load_defuzz_block_from_fcl_file(std::ifstream& file_contents);
-		int load_rules_from_fcl_file(std::ifstream& file_contents);
+		// load file (fcl_contents) functions
+ 		int load_vars_from_fcl_file(std::istream& file_contents, bool output = false);
+		int load_defuzz_block_from_fcl_file(std::istream& file_contents);
+		int load_rules_from_fcl_file(std::istream& file_contents);
   
 		// save model functions
  		void save_rules_to_fcl_file(std::ofstream& file_contents) const;

@@ -309,6 +309,50 @@ int WIN_FFLL_API ffll_load_fcl_file(int model_idx, const char* file)
 }; // end ffll_load_fcl_file()
 
 
+//
+// Function:	ffll_load_fcl_string()
+// 
+// Purpose:		This function initializes the model and
+//				loads the FCL file passed in
+//
+// Arguments:	
+//
+//		int			model_idx	- index of the model 
+//		const char*	fcl_str		- string input of fuzzy control language
+//
+// Returns:
+//
+//		The index of the model on success
+//		-1 on error
+//
+// Author:	Ming-Kai Jiau
+// Date:	2019/03/30
+// 
+// Modification History
+// Author	Date		Modification
+// ------	----		------------
+//
+// 
+
+int WIN_FFLL_API ffll_load_fcl_string(int model_idx, const char* fcl_str)
+{
+	ModelContainer* container = get_model(model_idx);
+
+	// we have a pointer to the container, so any modifications we
+	// make will be in the list. If we used the [] operator here,
+	// we'd get a COPY of the model and any changes wouldn't be permanent.
+
+	// perform initialization
+	container->init();
+
+	// load the FCL file passed in
+	if (container->model->load_from_fcl_string(fcl_str))
+		return -1;
+
+	return model_idx;
+
+}; // end ffll_load_fcl_string()
+
 
 //
 // Function:	ffll_get_msg_textA()

@@ -19,6 +19,7 @@
 //#include <fstream> // ??? moved to .h
 #include <time.h>
 #include <math.h>
+#include <sstream>
 
 #ifdef _DEBUG  
 #undef THIS_FILE
@@ -1361,7 +1362,7 @@ void FuzzyModelBase::save_rules_to_fcl_file(std::ofstream& file_contents) const
 
 	// loop through input vars, we'll save each set's ID into the var_sets array
 	// 05/02 - modifying so we write out what the FCL standard says we should:
-	//		subcondition ::= (‘NOT???variable_name ‘IS?[‘NOT'] ) term_name ?? | ( variable_name ‘IS?[‘NOT’] term_name ) 
+	//		subcondition ::= (ï¿½NOT???variable_name ï¿½IS?[ï¿½NOT'] ) term_name ?? | ( variable_name ï¿½IS?[ï¿½NOTï¿½] term_name ) 
 	// NOTE: right now (5/02) we still don't support the 'NOT' option
 	// as opposed to the way we were doing it which was just:
 	//		subcondition ::= term_name
@@ -1460,7 +1461,7 @@ void FuzzyModelBase::save_rules_to_fcl_file(std::ofstream& file_contents) const
 			for (j = 0; j < input_var_count; j++)
 				{
 				// write out the subconditions in the form:
-				// ( variable_name ‘IS?term_name )
+				// ( variable_name ï¿½IS?term_name )
 
 				var = get_var(j);
 
@@ -1580,13 +1581,87 @@ int FuzzyModelBase::load_from_fcl_file(const char* file_name)
 
 
 //
+// Function:	load_from_fcl_string()
+// 
+// Purpose:		Main function to read an FCL string in and create a model.
+//				NOTE: It is a BRAIN-DEAD parser. 
+// Arguments:
+//
+//		const char* fcl_str - fcl string to read
+//
+// Returns:
+//
+//		0 - success
+//		non-zero - failure
+//
+// Author:	Ming-Kai Jiau
+// Date:	2019/03/30
+// 
+// Modification History
+// Author	Date		Modification
+// ------	----		------------
+//
+// 
+
+int FuzzyModelBase::load_from_fcl_string(const char* fcl_str)
+{
+	std::istringstream file_contents(fcl_str);
+
+	if ((fcl_str == NULL) || (fcl_str[0] == '\0'))
+	{
+		set_msg_text(ERR_READING_STRING);
+		return -1;
+	}
+
+	// load input variables
+	if (load_vars_from_fcl_file(file_contents))
+		return -1;	// error is written to msg_txt in the called func
+
+					// load the output variable
+	if (load_vars_from_fcl_file(file_contents, true))
+		return -1;	// error is written to msg_txt in the called func
+
+					// load sets for each var
+	for (int i = 0; i < input_var_count; i++)
+	{
+		if (input_var_arr[i]->load_sets_from_fcl_file(file_contents))
+		{
+			// get the message text and set it for the model
+			set_msg_text(input_var_arr[i]->get_msg_text());
+			return -1;
+		}
+	} // end loop through input vars
+
+	if (output_var)
+	{
+		if (output_var->load_sets_from_fcl_file(file_contents))
+		{
+			// get the message text and set it for the model
+			set_msg_text(output_var->get_msg_text());
+			return -1;
+		}
+	} // end if output var
+
+	if (load_rules_from_fcl_file(file_contents))
+		return -1;	// error is written to msg_txt in the called func
+
+	if (load_defuzz_block_from_fcl_file(file_contents))
+		return -1;	// error is written to msg_txt in the called func
+
+	return 0;
+
+
+} // end FuzzyModelBase::load_from_fcl_string()
+
+
+//
 // Function:	load_vars_from_fcl_file()
 // 
 // Purpose:		Loads the variables from the FCL file and creates them.
 //
 // Arguments:
 //
-//		std::ifstream&	file_contnts	- file to read from
+//		std::istream&	file_contnts	- file to read from
 //		bool			output_ind		-	indicates if we're reading the output variable
 //
 // Returns:
@@ -1603,7 +1678,7 @@ int FuzzyModelBase::load_from_fcl_file(const char* file_name)
 //
 //	
 
-int FuzzyModelBase::load_vars_from_fcl_file(std::ifstream& file_contents, bool output /* = false */)
+int FuzzyModelBase::load_vars_from_fcl_file(std::istream& file_contents, bool output /* = false */)
 {
 		
 	const char* start_token;// starting token (depends on input or output)
@@ -1775,7 +1850,7 @@ int FuzzyModelBase::load_vars_from_fcl_file(std::ifstream& file_contents, bool o
 //
 // Arguments:
 //
-//		std::ifstream&	file_contnts	- file to read from
+//		std::istream&	file_contnts	- file to read from
 //
 // Returns:
 //
@@ -1789,13 +1864,13 @@ int FuzzyModelBase::load_vars_from_fcl_file(std::ifstream& file_contents, bool o
 //	Author		Date		Modification
 //	------		----		------------
 //	Michael Z	6/02		modifying so we read what the FCL standard says we should:
-//								subcondition ::= (‘NOT???variable_name ‘IS?[‘NOT'] ) term_name ?? | ( variable_name ‘IS?[‘NOT’] term_name ) 
+//								subcondition ::= (ï¿½NOT???variable_name ï¿½IS?[ï¿½NOT'] ) term_name ?? | ( variable_name ï¿½IS?[ï¿½NOTï¿½] term_name ) 
 //							NOTE: we still don't support the 'NOT' option
 //							as opposed to the way we were doing it which was just:
 //								subcondition ::= term_name
 //							both methods will be supported for backwards compatibility
 
-int FuzzyModelBase::load_rules_from_fcl_file(std::ifstream& file_contents)
+int FuzzyModelBase::load_rules_from_fcl_file(std::istream& file_contents)
 {
 	// a very brain-dead parser of the RULEBLOCK section, this assumes that we have
 	// a line for every rule (even if one does not exist, there's a comment).  It also
@@ -2123,7 +2198,7 @@ int FuzzyModelBase::load_rules_from_fcl_file(std::ifstream& file_contents)
 //
 // Arguments:
 //
-//		std::ifstream&	file_contnts	- file to read from
+//		std::istream&	file_contnts	- file to read from
 //
 // Returns:
 //
@@ -2139,7 +2214,7 @@ int FuzzyModelBase::load_rules_from_fcl_file(std::ifstream& file_contents)
 //
 //	
 
-int FuzzyModelBase::load_defuzz_block_from_fcl_file(std::ifstream& file_contents)
+int FuzzyModelBase::load_defuzz_block_from_fcl_file(std::istream& file_contents)
 {
 	int method;				// defuzzification method
  	file_contents.seekg(0);	// go to start of file

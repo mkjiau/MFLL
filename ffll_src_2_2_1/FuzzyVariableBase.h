@@ -4,7 +4,7 @@
 //
 // Purpose:	The FuzzyVariableBase class is the ancestor of all Fuzzy Variable classes
 //
-// Copyright © 1999-2001 Louder Than A Bomb! Software
+// Copyright ï¿½ 1999-2001 Louder Than A Bomb! Software
 //
 // This file is part of the FFLL (Free Fuzzy Logic Library) project (http://ffll.sourceforge.net)
 // It is released under the BSD license, see http://ffll.sourceforge.net/license.txt for the full text.
@@ -79,7 +79,7 @@ class  FuzzyVariableBase :  virtual public FFLLBase
 		// save/load functions
 		void save_var_to_fcl_file(std::ofstream& file_contents);
 		void save_sets_to_fcl_file(std::ofstream& file_contents);
-		int load_sets_from_fcl_file(std::ifstream& file_contents);
+		int load_sets_from_fcl_file(std::istream& file_contents);
 
 		// misc functions
 		virtual RealType convert_idx_to_value(int idx) const;
