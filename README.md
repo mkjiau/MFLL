@@ -1,17 +1,21 @@
 ## MultiCharts Fuzzy Logic Library (MFLL)
-Extended from C/C++ library of [FFLL](http://ffll.sourceforge.net/), MFLL allows you to apply [fuzzy control engine](https://en.wikipedia.org/wiki/Fuzzy_logic) for your trading strategy design in MultiCharts. You will write [Fuzzy Control Language](http://ffll.sourceforge.net/fcl.htm) with PL/EL during strategy development. 
+Extended from C/C++ library of [FFLL](http://ffll.sourceforge.net/), MFLL allows you to apply [fuzzy control engine](https://en.wikipedia.org/wiki/Fuzzy_logic) for your trading strategy design in MultiCharts. You will write [Fuzzy Control Language](http://ffll.sourceforge.net/fcl.htm) (FCL) with PL/EL during strategy development. 
 
 
 ### How to use MFLL?
 
-Download the source codes and compile as MFLLAPI.dll (x86 or x64) that's compatiable with MultiCharts.
+Go to `Installation` folder, then follow the instructions as below:
+
+Step 1. Download `MFLLAPI.dll` and `MFLL_MC.pla`
+Step 2. Put .dll in `C:\Program Files\TS Support\MultiCharts64`
+Step 3. Click `.pla` to import PL/SL-wrapped APIs for use
+Step 4. Done. Get started with MFLL.
+
+*You also can download the source codes and compile MFLLAPI.dll yourself to be compatiable with your MultiCharts.*
+
+
 
 #### Write FCL Directly in PL/EL
-API
-```c
-double WIN_FFLL_API MFLLFuzzyInference(LPSTR fcl_str, double* crisp_inputs, long input_size);
-```
-PL/EL
 ```pas
 vars: fcl("");
 
@@ -66,28 +70,20 @@ NewLine,
 "END_FUNCTION_BLOCK", NewLine
 );
 
-
-DefineDLLFunc: "PATH\TO\MFLLAPI.dll",  double, "MFLLFuzzyInference", LPSTR, lpdouble, long; 
-
 Array: double FuzzyInputs[2](0.0);
-FuzzyInputs[0] = 5.; FuzzyInputs[1] = 5.;;
-print(MFLLFuzzyInference(fcl, &FuzzyInputs[0], 2));
+FuzzyInputs[0] = 5.; // Our_Health
+FuzzyInputs[1] = 5.; // Enemy_Health
+print(MFLLFuzzyInference(fcl, FuzzyInputs));
 ```
 
 #### Load FCL file into PL/EL
-
-API
-```c
-double WIN_FFLL_API MFLLFuzzyInferenceByFile(LPSTR fcl_file, double* crisp_inputs, long input_size);
-```
-PL/EL
 ```pas
-DefineDLLFunc: "PATH\TO\MFLLAPI.dll", double, "MFLLFuzzyInferenceByFile", LPSTR, lpdouble, long; 
-
 Array: double FuzzyInputs[2](0.0);
-FuzzyInputs[0] = 5.; FuzzyInputs[1] = 5.;;
-print(MFLLFuzzyInferenceByFile("PATH\TO\FCL_FILE", &FuzzyInputs[0], 2));
+FuzzyInputs[0] = 5.; 
+FuzzyInputs[1] = 5.;
+print(MFLLFuzzyInferenceByFile("PATH\TO\FCL_FILE", FuzzyInputs));
 ```
+see `Examples` folder to find an example of `FCL_FILE` that's just a text file written in FCL.
 
 Copyright
 ---
