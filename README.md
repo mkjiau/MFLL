@@ -6,10 +6,10 @@ Extended from C/C++ library of [FFLL](http://ffll.sourceforge.net/), MFLL allows
 
 Go to `Installation` folder, then follow the instructions as below:
 
-Step 1. Download `MFLLAPI.dll` and `MFLL_MC.pla`
-Step 2. Put .dll in `C:\Program Files\TS Support\MultiCharts64`
-Step 3. Click `.pla` to import PL/SL-wrapped APIs for use
-Step 4. Done. Get started with MFLL.
+1. Download `MFLLAPI.dll` and `MFLL_MC.pla`
+2. Put .dll in `C:\Program Files\TS Support\MultiCharts64`
+3. Click `.pla` to import PL/SL-wrapped APIs for use
+4. Done. Get started with MFLL.
 
 *You also can download the source codes and compile MFLLAPI.dll yourself to be compatiable with your MultiCharts.*
 
