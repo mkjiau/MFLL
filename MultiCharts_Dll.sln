@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyDll", "MyDll\MyDll.vcxproj", "{F9A629CC-0028-4B19-BA6F-F28C0C3C666F}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleTester", "ConsoleTester\ConsoleTester.vcxproj", "{9F570F36-71DB-4264-9EB1-9B5B62E21274}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ffllapi", "ffll_src_2_2_1\Msvc\FFLL API.vcxproj", "{3BFF6501-3413-4EA9-BE43-CA7E097FE3BB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFLLAPI", "MFLLAPI\MFLLAPI.vcxproj", "{3BFF6501-3413-4EA9-BE43-CA7E097FE3BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +15,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F9A629CC-0028-4B19-BA6F-F28C0C3C666F}.Debug|x64.ActiveCfg = Debug|x64
-		{F9A629CC-0028-4B19-BA6F-F28C0C3C666F}.Debug|x64.Build.0 = Debug|x64
-		{F9A629CC-0028-4B19-BA6F-F28C0C3C666F}.Debug|x86.ActiveCfg = Debug|Win32
-		{F9A629CC-0028-4B19-BA6F-F28C0C3C666F}.Debug|x86.Build.0 = Debug|Win32
-		{F9A629CC-0028-4B19-BA6F-F28C0C3C666F}.Release|x64.ActiveCfg = Release|x64
-		{F9A629CC-0028-4B19-BA6F-F28C0C3C666F}.Release|x64.Build.0 = Release|x64
-		{F9A629CC-0028-4B19-BA6F-F28C0C3C666F}.Release|x86.ActiveCfg = Release|Win32
-		{F9A629CC-0028-4B19-BA6F-F28C0C3C666F}.Release|x86.Build.0 = Release|Win32
 		{9F570F36-71DB-4264-9EB1-9B5B62E21274}.Debug|x64.ActiveCfg = Debug|x64
 		{9F570F36-71DB-4264-9EB1-9B5B62E21274}.Debug|x64.Build.0 = Debug|x64
 		{9F570F36-71DB-4264-9EB1-9B5B62E21274}.Debug|x86.ActiveCfg = Debug|Win32

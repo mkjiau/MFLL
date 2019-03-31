@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>ffllapi</ProjectName>
+    <ProjectName>MFLLAPI</ProjectName>
     <SccProjectName />
     <SccLocalPath />
     <ProjectGuid>{3BFF6501-3413-4EA9-BE43-CA7E097FE3BB}</ProjectGuid>
@@ -169,7 +169,7 @@
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <ModuleDefinitionFile>..\MFLLAPI.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\MFLLAPI.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -252,54 +252,54 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\COGDefuzzSetObj.cpp" />
-    <ClCompile Include="..\COGDefuzzVarObj.cpp" />
-    <ClCompile Include="..\DefuzzSetObj.cpp" />
-    <ClCompile Include="..\DefuzzVarObj.cpp" />
-    <ClCompile Include="..\FFLLAPI.cpp" />
-    <ClCompile Include="..\FFLLBase.cpp" />
-    <ClCompile Include="..\FuzzyModelBase.cpp" />
-    <ClCompile Include="..\FuzzyOutSet.cpp" />
-    <ClCompile Include="..\FuzzyOutVariable.cpp" />
-    <ClCompile Include="..\FuzzySetBase.cpp" />
-    <ClCompile Include="..\FuzzyVariableBase.cpp" />
-    <ClCompile Include="..\MemberFuncBase.cpp" />
-    <ClCompile Include="..\MemberFuncSCurve.cpp" />
-    <ClCompile Include="..\MemberFuncSingle.cpp" />
-    <ClCompile Include="..\MemberFuncTrap.cpp" />
-    <ClCompile Include="..\MemberFuncTri.cpp" />
-    <ClCompile Include="..\MFLLAPI.cpp" />
-    <ClCompile Include="..\MOMDefuzzSetObj.cpp" />
-    <ClCompile Include="..\MOMDefuzzVarObj.cpp" />
-    <ClCompile Include="..\RuleArray.cpp" />
+    <ResourceCompile Include="MFLLAPI.rc" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\MFLLAPI.def" />
+    <ClCompile Include="COGDefuzzSetObj.cpp" />
+    <ClCompile Include="COGDefuzzVarObj.cpp" />
+    <ClCompile Include="DefuzzSetObj.cpp" />
+    <ClCompile Include="DefuzzVarObj.cpp" />
+    <ClCompile Include="FFLLAPI.cpp" />
+    <ClCompile Include="FFLLBase.cpp" />
+    <ClCompile Include="FuzzyModelBase.cpp" />
+    <ClCompile Include="FuzzyOutSet.cpp" />
+    <ClCompile Include="FuzzyOutVariable.cpp" />
+    <ClCompile Include="FuzzySetBase.cpp" />
+    <ClCompile Include="FuzzyVariableBase.cpp" />
+    <ClCompile Include="MemberFuncBase.cpp" />
+    <ClCompile Include="MemberFuncSCurve.cpp" />
+    <ClCompile Include="MemberFuncSingle.cpp" />
+    <ClCompile Include="MemberFuncTrap.cpp" />
+    <ClCompile Include="MemberFuncTri.cpp" />
+    <ClCompile Include="MFLLAPI.cpp" />
+    <ClCompile Include="MOMDefuzzSetObj.cpp" />
+    <ClCompile Include="MOMDefuzzVarObj.cpp" />
+    <ClCompile Include="RuleArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="FFLLAPI.rc" />
+    <None Include="MFLLAPI.def" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\COGDefuzzSetObj.h" />
-    <ClInclude Include="..\COGDefuzzVarObj.h" />
-    <ClInclude Include="..\DefuzzSetObj.h" />
-    <ClInclude Include="..\DefuzzVarObj.h" />
-    <ClInclude Include="..\FFLLAPI.h" />
-    <ClInclude Include="..\FFLLBase.h" />
-    <ClInclude Include="..\FuzzyModelBase.h" />
-    <ClInclude Include="..\FuzzyOutSet.h" />
-    <ClInclude Include="..\FuzzyOutVariable.h" />
-    <ClInclude Include="..\FuzzySetBase.h" />
-    <ClInclude Include="..\FuzzyVariableBase.h" />
-    <ClInclude Include="..\MemberFuncBase.h" />
-    <ClInclude Include="..\MemberFuncSCurve.h" />
-    <ClInclude Include="..\MemberFuncSingle.h" />
-    <ClInclude Include="..\MemberFuncTrap.h" />
-    <ClInclude Include="..\MemberFuncTri.h" />
-    <ClInclude Include="..\MFLLAPI.h" />
-    <ClInclude Include="..\MOMDefuzzSetObj.h" />
-    <ClInclude Include="..\MOMDefuzzVarObj.h" />
-    <ClInclude Include="..\RuleArray.h" />
+    <ClInclude Include="COGDefuzzSetObj.h" />
+    <ClInclude Include="COGDefuzzVarObj.h" />
+    <ClInclude Include="DefuzzSetObj.h" />
+    <ClInclude Include="DefuzzVarObj.h" />
+    <ClInclude Include="FFLLAPI.h" />
+    <ClInclude Include="FFLLBase.h" />
+    <ClInclude Include="FuzzyModelBase.h" />
+    <ClInclude Include="FuzzyOutSet.h" />
+    <ClInclude Include="FuzzyOutVariable.h" />
+    <ClInclude Include="FuzzySetBase.h" />
+    <ClInclude Include="FuzzyVariableBase.h" />
+    <ClInclude Include="MemberFuncBase.h" />
+    <ClInclude Include="MemberFuncSCurve.h" />
+    <ClInclude Include="MemberFuncSingle.h" />
+    <ClInclude Include="MemberFuncTrap.h" />
+    <ClInclude Include="MemberFuncTri.h" />
+    <ClInclude Include="MFLLAPI.h" />
+    <ClInclude Include="MOMDefuzzSetObj.h" />
+    <ClInclude Include="MOMDefuzzVarObj.h" />
+    <ClInclude Include="RuleArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

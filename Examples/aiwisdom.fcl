@@ -1,0 +1,50 @@
+(* FCL File Created From FFLL Model : Thu Sep 06 10:39:12 2001 *)
+FUNCTION_BLOCK
+
+VAR_INPUT
+	Our_Health	REAL; (* RANGE(0 .. 100) *) 
+	Enemy_Health	REAL; (* RANGE(0 .. 100) *) 
+END_VAR
+
+VAR_OUTPUT
+	Aggressiveness	REAL; (* RANGE(0 .. 4) *) 
+END_VAR
+
+FUZZIFY Our_Health
+	TERM Near_Death := (0, 0) (0, 1) (50, 0) ;
+	TERM Good := (14, 0) (50, 1) (83, 0) ;
+	TERM Excellent := (50, 0) (100, 1) (100, 0) ;
+END_FUZZIFY
+
+FUZZIFY Enemy_Health
+	TERM Near_Death := (0, 0) (0, 1) (50, 0) ;
+	TERM Good := (14, 0) (50, 1) (83, 0) ;
+	TERM Excellent := (50, 0) (100, 1) (100, 0) ;
+END_FUZZIFY
+
+FUZZIFY Aggressiveness
+	TERM Run_Away := 1 ;
+	TERM Fight_Defensively := 2 ;
+	TERM All_Out_Attack := 3 ;
+END_FUZZIFY
+
+DEFUZZIFY valve
+	METHOD: MoM;
+END_DEFUZZIFY
+
+RULEBLOCK first
+	AND:MIN;
+	ACCUM:MAX;
+	RULE 0: IF Good AND Good THEN Fight_Defensively;
+	RULE 1: IF Good AND Excellent THEN Fight_Defensively;
+	RULE 2: IF Good AND Near_Death THEN All_Out_Attack;
+	RULE 3: IF Excellent AND Good THEN All_Out_Attack;
+	RULE 4: IF Excellent AND Excellent THEN Fight_Defensively;
+	RULE 5: IF Excellent AND Near_Death THEN All_Out_Attack;
+	RULE 6: IF Near_Death AND Good THEN Run_Away;
+	RULE 7: IF Near_Death AND Excellent THEN Run_Away;
+	RULE 8: IF Near_Death AND Near_Death THEN Fight_Defensively;
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
+

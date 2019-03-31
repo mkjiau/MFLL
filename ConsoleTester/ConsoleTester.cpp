@@ -1,12 +1,3 @@
-//
-// File:	AIWisdom.cpp	
-//
-// Purpose:	Test program for FFLL API
-//
-// Copyright ?2001 Louder Than A Bomb! Software
-//
-//
-//
 #include "stdafx.h"
 #include "FFLLAPI.h"	// FFLL API
 #include <iostream>	// for i/o functions
@@ -145,5 +136,3 @@ END_FUNCTION_BLOCK \n\
 	return 0;
 
 } // end main()
-
-
