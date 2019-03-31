@@ -20,6 +20,7 @@ extern "C"
 {
 	// MFLL APIs
 	double WIN_FFLL_API MFLLFuzzyInference(LPSTR fcl_str, double* crisp_inputs, long input_size);
+	double WIN_FFLL_API MFLLFuzzyInferenceByFile(LPSTR fcl_file, double* crisp_inputs, long input_size);
 } 
 
 

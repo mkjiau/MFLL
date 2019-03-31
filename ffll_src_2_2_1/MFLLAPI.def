@@ -11,3 +11,4 @@ EXPORTS
 	ffll_get_msg_textW		@8
 	ffll_load_fcl_string	@9
 	MFLLFuzzyInference		@10
+	MFLLFuzzyInferenceByFile @11
