@@ -1,8 +1,20 @@
 ## MultiCharts Fuzzy Logic Library (MFLL)
+Extended from C/C++ library of [FFLL](http://ffll.sourceforge.net/), MFLL allows you to apply [fuzzy control engine](https://en.wikipedia.org/wiki/Fuzzy_logic) for your trading strategy design in MultiCharts. You will write [Fuzzy Control Language](http://ffll.sourceforge.net/fcl.htm) with PL/EL during strategy development. 
 
-### Fuzzy Inference Usage in Easy Language
+
+### How to use MFLL?
+
+Download the source codes and compile as MFLLAPI.dll (x86 or x64) that's compatiable with MultiCharts.
+
+#### Write FCL Directly in PL/EL
+API
+```c
+double WIN_FFLL_API MFLLFuzzyInference(LPSTR fcl_str, double* crisp_inputs, long input_size);
 ```
+PL/EL
+```pas
 vars: fcl("");
+
 fcl = Text(
 "FUNCTION_BLOCK", NewLine,
 NewLine,
@@ -55,6 +67,28 @@ NewLine,
 );
 
 
-DefineDLLFunc: "\path\to\ffllapi.dll",  int, "jFuzzyInference", LPSTR, double, double; 
-print( NumToStr( jFuzzyInference(fcl, 91., 82.), 0 ) );
+DefineDLLFunc: "PATH\TO\MFLLAPI.dll",  double, "MFLLFuzzyInference", LPSTR, lpdouble, long; 
+
+Array: double FuzzyInputs[2](0.0);
+FuzzyInputs[0] = 5.; FuzzyInputs[1] = 5.;;
+print(MFLLFuzzyInference(fcl, &FuzzyInputs[0], 2));
 ```
+
+#### Load FCL file into PL/EL
+
+API
+```c
+double WIN_FFLL_API MFLLFuzzyInferenceByFile(LPSTR fcl_file, double* crisp_inputs, long input_size);
+```
+PL/EL
+```pas
+DefineDLLFunc: "PATH\TO\MFLLAPI.dll", double, "MFLLFuzzyInferenceByFile", LPSTR, lpdouble, long; 
+
+Array: double FuzzyInputs[2](0.0);
+FuzzyInputs[0] = 5.; FuzzyInputs[1] = 5.;;
+print(MFLLFuzzyInferenceByFile("PATH\TO\FCL_FILE", &FuzzyInputs[0], 2));
+```
+
+Copyright
+---
+© 2019-present Ming-Kai Jiau.
