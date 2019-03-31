@@ -2,7 +2,7 @@
 #include "FFLLAPI.h"
 
 //
-// Function:	MFLLFuzzyInference()
+// Function:	MFLL_FuzzyInference()
 // 
 // Purpose:		This function simplifies usage to offer one-stop fuzzy inference output
 //				in which it consists of the required APIs from native FFLL library.
@@ -25,7 +25,7 @@
 // ------	----		------------
 //
 // 
-double WIN_FFLL_API MFLLFuzzyInference(LPSTR fcl_str, double* crisp_inputs, long input_size)
+double WIN_FFLL_API MFLL_FuzzyInference(LPSTR fcl_str, double* crisp_inputs, long input_size)
 {
 	// create and load the model
 	int model = ffll_new_model();
@@ -50,7 +50,7 @@ double WIN_FFLL_API MFLLFuzzyInference(LPSTR fcl_str, double* crisp_inputs, long
 
 
 //
-// Function:	MFLLFuzzyInferenceByFile()
+// Function:	MFLL_FuzzyInferenceByFile()
 // 
 // Purpose:		Load FCL from file.
 //              This function simplifies usage to offer one-stop fuzzy inference output
@@ -74,7 +74,7 @@ double WIN_FFLL_API MFLLFuzzyInference(LPSTR fcl_str, double* crisp_inputs, long
 // ------	----		------------
 //
 // 
-double WIN_FFLL_API MFLLFuzzyInferenceByFile(LPSTR fcl_file, double* crisp_inputs, long input_size)
+double WIN_FFLL_API MFLL_FuzzyInferenceByFile(LPSTR fcl_file, double* crisp_inputs, long input_size)
 {
 	// create and load the model
 	int model = ffll_new_model();
