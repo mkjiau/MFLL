@@ -169,7 +169,7 @@
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <ModuleDefinitionFile>..\FFLLAPI.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\MFLLAPI.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -268,12 +268,13 @@
     <ClCompile Include="..\MemberFuncSingle.cpp" />
     <ClCompile Include="..\MemberFuncTrap.cpp" />
     <ClCompile Include="..\MemberFuncTri.cpp" />
+    <ClCompile Include="..\MFLLAPI.cpp" />
     <ClCompile Include="..\MOMDefuzzSetObj.cpp" />
     <ClCompile Include="..\MOMDefuzzVarObj.cpp" />
     <ClCompile Include="..\RuleArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\FFLLAPI.def" />
+    <CustomBuild Include="..\MFLLAPI.def" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FFLLAPI.rc" />
@@ -295,6 +296,7 @@
     <ClInclude Include="..\MemberFuncSingle.h" />
     <ClInclude Include="..\MemberFuncTrap.h" />
     <ClInclude Include="..\MemberFuncTri.h" />
+    <ClInclude Include="..\MFLLAPI.h" />
     <ClInclude Include="..\MOMDefuzzSetObj.h" />
     <ClInclude Include="..\MOMDefuzzVarObj.h" />
     <ClInclude Include="..\RuleArray.h" />

@@ -1,9 +1,4 @@
-; .def file for the FFLL API
-;
-; Copyright ?2001 Louder Than A Bomb! Software
-;
-
-; For Win32 DLLs, only EXPORTs really required.
+; .def file for the MFLL & FFLL APIs
 
 EXPORTS
   	ffll_new_model			@1

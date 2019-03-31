@@ -47,7 +47,7 @@ int WIN_FFLL_API ffll_load_fcl_file(int model_idx, const char* file);
 int WIN_FFLL_API ffll_load_fcl_string(int model_idx, const char* fcl_str); 
 
 // MFLL APIs
-double WIN_FFLL_API MFLLFuzzyInference(LPSTR fcl_str, double* crisp_inputs, long input_size);
+//double WIN_FFLL_API MFLLFuzzyInference(LPSTR fcl_str, double* crisp_inputs, long input_size);
 
 
 const wchar_t* WIN_FFLL_API ffll_get_msg_textW(int model_idx);

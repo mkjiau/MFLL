@@ -72,6 +72,9 @@
     <ClCompile Include="..\RuleArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\MFLLAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FFLLAPI.rc">
@@ -136,9 +139,12 @@
     <ClInclude Include="..\RuleArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\MFLLAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\FFLLAPI.def">
+    <CustomBuild Include="..\MFLLAPI.def">
       <Filter>Source Files</Filter>
     </CustomBuild>
   </ItemGroup>
