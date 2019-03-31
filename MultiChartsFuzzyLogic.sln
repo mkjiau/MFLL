@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleTester", "ConsoleTester\ConsoleTester.vcxproj", "{9F570F36-71DB-4264-9EB1-9B5B62E21274}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3BFF6501-3413-4EA9-BE43-CA7E097FE3BB} = {3BFF6501-3413-4EA9-BE43-CA7E097FE3BB}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFLLAPI", "MFLLAPI\MFLLAPI.vcxproj", "{3BFF6501-3413-4EA9-BE43-CA7E097FE3BB}"
 EndProject

@@ -105,11 +105,7 @@
       <MinimalRebuild>true</MinimalRebuild>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PreprocessorDefinitions>_DEBUG;_STATIC_LIB;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AssemblerListingLocation>.\..\..\intermediate files\ffllapi\debug\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
-      <PrecompiledHeaderOutputFile>.\..\..\intermediate files\ffllapi\debug\FFLL API.pch</PrecompiledHeaderOutputFile>
-      <ObjectFileName>.\..\..\intermediate files\ffllapi\debug\</ObjectFileName>
-      <ProgramDataBaseFileName>.\..\..\intermediate files\ffllapi\debug\</ProgramDataBaseFileName>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
     </ClCompile>
     <Midl>
@@ -130,7 +126,7 @@
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <ModuleDefinitionFile>..\FFLLAPI.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\MFLLAPI.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -150,6 +146,7 @@
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories>..\MFLLAPI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -170,6 +167,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <ModuleDefinitionFile>.\MFLLAPI.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -184,11 +182,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <OmitFramePointers>false</OmitFramePointers>
       <PreprocessorDefinitions>NDEBUG;_STATIC_LIB;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AssemblerListingLocation>.\..\..\intermediate files\ffllapi\release\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
-      <PrecompiledHeaderOutputFile>.\..\..\intermediate files\ffllapi\release\FFLL API.pch</PrecompiledHeaderOutputFile>
-      <ObjectFileName>.\..\..\intermediate files\ffllapi\release\</ObjectFileName>
-      <ProgramDataBaseFileName>.\..\..\intermediate files\ffllapi\release\</ProgramDataBaseFileName>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -208,7 +202,7 @@
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <ModuleDefinitionFile>..\FFLLAPI.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\MFLLAPI.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -223,11 +217,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <OmitFramePointers>false</OmitFramePointers>
       <PreprocessorDefinitions>NDEBUG;_STATIC_LIB;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AssemblerListingLocation>.\..\..\intermediate files\ffllapi\release\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
-      <PrecompiledHeaderOutputFile>.\..\..\intermediate files\ffllapi\release\FFLL API.pch</PrecompiledHeaderOutputFile>
-      <ObjectFileName>.\..\..\intermediate files\ffllapi\release\</ObjectFileName>
-      <ProgramDataBaseFileName>.\..\..\intermediate files\ffllapi\release\</ProgramDataBaseFileName>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -248,7 +238,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <ModuleDefinitionFile>..\FFLLAPI.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\MFLLAPI.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
