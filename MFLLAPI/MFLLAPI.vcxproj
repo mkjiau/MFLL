@@ -289,6 +289,7 @@
     <ClInclude Include="MFLLAPI.h" />
     <ClInclude Include="MOMDefuzzSetObj.h" />
     <ClInclude Include="MOMDefuzzVarObj.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="RuleArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

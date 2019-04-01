@@ -1,0 +1,48 @@
+FUNCTION_BLOCK 
+
+VAR_INPUT 
+	RSI	REAL; (* RANGE(0 .. 100) *) 
+	Bias	REAL; (* RANGE(-100 .. 100) *) 
+END_VAR 
+
+VAR_OUTPUT 
+	Action	REAL; (* RANGE(-2 .. 2) *) 
+END_VAR 
+
+FUZZIFY RSI 
+	TERM Small  := (0, 0) (0, 1) (50, 0) ; 
+	TERM Middle := (10, 0) (50, 1) (70, 0) ; 
+	TERM Large  := (30, 0) (100, 1) (100, 0) ; 
+END_FUZZIFY 
+
+FUZZIFY Bias  
+	TERM Negative  := (-100, 0) (-100, 1) (50, 0) ; 
+	TERM Zero := (-80, 0) (-35, 1) (5, 1) (50, 0) ; 
+	TERM Positive  := (-50, 0) (100, 1) (100, 0) ; 
+END_FUZZIFY 
+
+FUZZIFY Action 
+	TERM Short   := -1 ; 
+	TERM Neutral := 0 ; 
+	TERM Long    := 1 ; 
+END_FUZZIFY 
+
+DEFUZZIFY valve 
+METHOD: MoM; 
+END_DEFUZZIFY 
+
+RULEBLOCK first 
+	AND:MIN; 
+	ACCUM:MAX; 
+	RULE 0: IF Large AND Positive THEN Long; 
+	RULE 1: IF Large AND Zero THEN Long; 
+	RULE 2: IF Large AND Negative THEN Long ; 
+	RULE 3: IF Middle AND Positive THEN Long ; 
+	RULE 4: IF Middle AND Zero THEN Long ; 
+	RULE 5: IF Middle AND Negative THEN Short ; 
+	RULE 6: IF Small AND Positive THEN Neutral; 
+	RULE 7: IF Small AND Zero THEN Short ; 
+	RULE 8: IF Small AND Negative THEN Short ;  
+END_RULEBLOCK 
+
+END_FUNCTION_BLOCK
